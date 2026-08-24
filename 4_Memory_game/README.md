@@ -5,6 +5,8 @@
 ## Equipment used:
 
 - Arduino Mega 2560
+- LED's (red, blue, green, yellow, white)
+- Resistors( 330ohm (3x) and 220ohm (2x) )
 - Buttons (5x)
 - Potentiometer (2.2kΩ - 10kΩ)
 - Passive buzzer
