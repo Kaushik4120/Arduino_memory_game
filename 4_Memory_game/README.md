@@ -4,6 +4,18 @@ This project combines the Arduino concepts I had learnt from my previous project
 
 <img width="400" alt="Arduino Memory Game" src="YOUR_IMAGE_LINK_HERE" />
 
+## How it works:
+
+1. The user starts the game by pressing any button.
+2. The Arduino generates a random sequence of five LEDs.
+3. The sequence is displayed using the LEDs at a speed determined by the current difficulty level.
+4. The user reproduces the sequence using the five corresponding buttons.
+5. The Arduino stores and compares the generated and user sequences.
+6. A correct sequence increases the total score and progresses the game.
+7. After every three successful rounds, the LED playback speed increases.
+8. A single incorrect sequence ends the game.
+9. Successfully completing all 9 rounds produces the final victory screen and sound.
+
 ## Equipment used:
 
 - Arduino Mega 2560
