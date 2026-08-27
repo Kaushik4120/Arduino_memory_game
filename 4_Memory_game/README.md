@@ -16,7 +16,7 @@ Based on the beginner knowledge i have learnt so far related to Arduino, i had i
 
 ## Brief project description:
 
-- Practical use: Has a game-like system where the user has to correctly copy the random sequence of LED' lights that the microcontroller generates.
+- Practical use: Has a game-like system containing 9 rounds with increasing difficulty where the user has to correctly copy the random sequence the LED's lights that the microcontroller generates.
 
 - LCD: displays menu screens and game results to guide the user through the game
 
@@ -38,40 +38,47 @@ Based on the beginner knowledge i have learnt so far related to Arduino, i had i
 
 - Found the difference between how local and global variables are used to efficiently control such game-like projects.
 
-- Mastered the art of creating intermediate level fun display screens to gamify the project extensively.
+- Mastered the art of creating intermediate level fun display screens to gamify the project extensively, using my knowledge of delay() and LCD functions
 
+- Learnt to structure my 400-line code in an efficient manner using indentation and comments to improve the code's readability.
+
+- Learnt and implemented new concepts using my past experience in coding languages, such as user defined functions, different combinations of loops and conditional statements
+
+- Learnt how to visualize the game's algorithm and practically experiment with it, which immensely with writing the code.
+
+- Rather than ineffectively using the 'return' function, I used Boolean conditional statements to manage game losses/victories.
+  
 ## My improvements / experimentations: 
 
 - Initially, I tested different resistor values with LED's to observe varying brightness levels, and related them with human eye sensitivity.
 
 - Integrated an LCD display to provide real-time visual feedback instead of only using the Serial Monitor.
 
-- Experimented with improving the physical circuit layout by using longer jumper wires and repositioning components for easier interaction.
+- Experimented with different frequency sounds, which helped me create custom jingles for menu screens and victory/loss messages.
 
-- Explored future improvements such as button debouncing and more advanced sound processing methods to support multiple notes/chords.
+- Used user-defined functions and function prototypes to write the game sound jingles, which improved reduced code length and improved readability.
 
-- Developed a better understanding of the difference between `lcd.clear()` and `lcd.setCursor()` functions from the LiquidCrystal library.
+- When any button in the user sequence was pressed for too long, it registered as multiple presses. To solve this, I used a simple conditional statement positioned inside a while loop, which made sure only a single press would be registered while the button is still being pressed.
+
 
 ## Troubleshooting log:
 
-- Issue: Due to the increased complexity of the project, I made repeated syntax and pin connection errors, such as missing semicolons, incorrect pin numbers and small mistakes in breadboard connections.
+- Issue: I consistently forgot how a button worked, because it involved a slightly non-intuitive physics concept related to electrical circuits.
 
-  Fix: I created a checklist framework that I followed before uploading completed project code. This included checking pin assignments, wiring connections and code syntax, which reduced repeated mistakes.
+  Fix: I made up a two-point framework stating the two main differences between pull-up and pull-down resistors using mnemonic devices, which made the concept much more memorable.
 
-- Issue: The breadboard became too congested, making it difficult to press the buttons properly.
+- Issue: Initially, no matter how hard I tried, I lost on the very fisrt round every time. 
 
-  Fix: I used longer jumper wires for the button inputs and moved the buttons towards the edge of the breadboard, creating more space and making the circuit easier to interact with.
-
-- Issue: Some buttons were not fitting tightly into the breadboard and would move when pressed.
-
-  Fix: I checked the button orientation and positioning on the breadboard to ensure a more secure connection.
+  Fix: I was skeptical of some technical errors, and used the Serial monitor to check if both the LED and user sequence arrays matched. This helped me find out the wrong location of my variables initalization, and eventually solve it. 
 
 ## Future improvements:
 
-- Implement button debouncing for more reliable button detection.
+- Implement button debouncing to make sure faulty circuit boards do not negatively affect gameplay.
 
-- Add support for playing multiple notes simultaneously (chords).
+- Increase LED count with increasing difficulty, in addition to solely an increase in speed.
 
-- Improve sound generation to create a more realistic piano experience.
+- Add additional features such as game lives, streaks/combos as well as options to play various mini-games in addition to the memory game itself.
 
-- Add LED indicators for visual feedback when notes are played.
+- Use other coding techniques to make the code even shorter and avoiding repetitive conditional statements.
+
+- Setting up a proper multi-stage project management framework for large projects involving different features, to make the process much smoother.
