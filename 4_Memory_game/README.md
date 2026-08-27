@@ -1,12 +1,14 @@
-# Project 4: Memory game
+# Project 5: Arduino Memory Game
 
-Based on the beginner knowledge i have learnt so far related to Arduino, i had indipendety designed a memory game, using components i used in the last 3 projects, and by introducing new software concepts and features.
+This project combines the Arduino concepts I had learnt from my previous projects into a complete interactive memory game. I independently designed the game logic, introduced new programming concepts and experimented with different hardware and software features to create a 9-round game with increasing difficulty.
+
+<img width="400" alt="Arduino Memory Game" src="YOUR_IMAGE_LINK_HERE" />
 
 ## Equipment used:
 
 - Arduino Mega 2560
-- LED's (red, blue, green, yellow, white)
-- Resistors( 330ohm (3x) and 220ohm (2x) )
+- LEDs (red, blue, green, yellow, white)
+- Resistors (330Ω (3x) and 220Ω (2x))
 - Buttons (5x)
 - Potentiometer (2.2kΩ - 10kΩ)
 - Passive buzzer
@@ -16,69 +18,74 @@ Based on the beginner knowledge i have learnt so far related to Arduino, i had i
 
 ## Brief project description:
 
-- Practical use: Has a game-like system containing 9 rounds with increasing difficulty where the user has to correctly copy the random sequence the LED's lights that the microcontroller generates.
+- Practical use: A game-like system containing 9 rounds where the user must correctly reproduce a randomly generated LED sequence.
 
-- LCD: displays menu screens and game results to guide the user through the game
+- Increasing difficulty: The game is divided into three difficulty levels, with the speed of the LED sequence increasing after every three successful rounds.
 
-- Buttons: Five buttons are used, each representing a different LED color.
+- LCD: Displays menus, round numbers, difficulty warnings, scores and game results to provide real-time feedback to the user.
 
-- Passive buzzer: Produces noises varying in pitch, from countdowns to victory message scales.
+- Buttons: Five buttons are used, with each button corresponding to one of the five LED colours.
+
+- Passive buzzer: Produces different frequencies for countdowns, button inputs, difficulty warnings and custom victory/loss jingles.
 
 - Potentiometer: Adjusts the LCD contrast level to improve visibility.
 
 ## Learning outcomes:
 
-- Deeply familiarized myself with the differences between 'for' and 'while' loops in practical scenarios
+- Developed a deeper understanding of `for` and `while` loops by applying them to different practical situations.
 
-- Learnt about the physics and the relationship between electrical signals and human eyesight
+- Learnt how local and global variables can be used to manage data and persistent game states.
 
-- Combined almost every concept learnt thus far into a single project, combined with newly learnt code features as well.
+- Learnt how to structure a larger Arduino program using conditional statements, loops, arrays, user-defined functions and function prototypes.
 
-- Added multiple debugging methods to my technical databank, making finding mistakes much more efficient and hassle free.
+- Improved my ability to visualise an algorithm before implementing it, making it easier to translate the game rules into code.
 
-- Found the difference between how local and global variables are used to efficiently control such game-like projects.
+- Combined concepts from my previous projects with newly learnt programming techniques to create a complete interactive system.
 
-- Mastered the art of creating intermediate level fun display screens to gamify the project extensively, using my knowledge of delay() and LCD functions
+- Improved my debugging approach by using the Serial Monitor to inspect array values and identify problems within the program.
 
-- Learnt to structure my 400-line code in an efficient manner using indentation and comments to improve the code's readability.
+- Improved code readability and organisation by structuring a program of approximately 400 lines using indentation, comments and separate functions.
 
-- Learnt and implemented new concepts using my past experience in coding languages, such as user defined functions, different combinations of loops and conditional statements
+- Developed a better understanding of how electrical signals and LED brightness interact with human visual perception through practical experimentation.
 
-- Learnt how to visualize the game's algorithm and practically experiment with it, which immensely with writing the code.
+## My improvements / experimentations:
 
-- Rather than ineffectively using the 'return' function, I used Boolean conditional statements to manage game losses/victories.
-  
-## My improvements / experimentations: 
+- Designed and implemented three difficulty levels by experimenting with different LED ON/OFF timings.
 
-- Initially, I tested different resistor values with LED's to observe varying brightness levels, and related them with human eye sensitivity.
+- Integrated an LCD display to provide real-time visual feedback instead of relying only on the Serial Monitor.
 
-- Integrated an LCD display to provide real-time visual feedback instead of only using the Serial Monitor.
+- Experimented with different resistor values to observe changes in LED brightness and relate them to human eye sensitivity.
 
-- Experimented with different frequency sounds, which helped me create custom jingles for menu screens and victory/loss messages.
+- Experimented with different buzzer frequencies to create custom countdown, difficulty, victory and loss sounds.
 
-- Used user-defined functions and function prototypes to write the game sound jingles, which improved reduced code length and improved readability.
+- Created user-defined sound functions and function prototypes to keep the main program organised and reduce repeated code.
 
-- When any button in the user sequence was pressed for too long, it registered as multiple presses. To solve this, I used a simple conditional statement positioned inside a while loop, which made sure only a single press would be registered while the button is still being pressed.
+- Implemented a button-release mechanism using a `while` loop to prevent a button being held down from accidentally registering as multiple inputs.
 
+- Implemented a persistent scoring and game-state system using global variables and Boolean logic, allowing the game to progress through multiple rounds without resetting the total score.
 
 ## Troubleshooting log:
 
-- Issue: I consistently forgot how a button worked, because it involved a slightly non-intuitive physics concept related to electrical circuits.
+1. Issue: The user input sequence was initially being stored incorrectly, with most array elements remaining as `0`.
 
-  Fix: I made up a two-point framework stating the two main differences between pull-up and pull-down resistors using mnemonic devices, which made the concept much more memorable.
+   Fix: I used the Serial Monitor to compare the generated LED sequence with the user's input sequence. This helped me identify that the array position variable was being reinitialised incorrectly inside the input loop. I moved the position variable so that it could increment correctly after every button press.
 
-- Issue: Initially, no matter how hard I tried, I lost on the very fisrt round every time. 
+2. Issue: I initially struggled to determine why the game was not correctly waiting for the user's button inputs.
 
-  Fix: I was skeptical of some technical errors, and used the Serial monitor to check if both the LED and user sequence arrays matched. This helped me find out the wrong location of my variables initalization, and eventually solve it. 
+   Fix: I replaced the original input structure with a `while` loop that continuously checks for button presses until the required number of inputs has been received.
+
+3. Issue: I initially had difficulty deciding how to end the game after either a loss or successful completion of all rounds, since `return` from `loop()` would simply allow Arduino's `loop()` function to execute again.
+
+   Fix: I used a Boolean `gameEnded` variable to control whether the main game code executes, allowing the game to remain in its final state after completion.
 
 ## Future improvements:
 
-- Implement button debouncing to make sure faulty circuit boards do not negatively affect gameplay.
+- Implement proper button debouncing to improve reliability when detecting rapid button presses.
 
-- Increase LED count with increasing difficulty, in addition to solely an increase in speed.
+- Increase the number of LEDs and sequence length as the difficulty increases, rather than only increasing the playback speed.
 
-- Add additional features such as game lives, streaks/combos as well as options to play various mini-games in addition to the memory game itself.
+- Add additional gameplay features such as lives, streaks/combos and different mini-games.
 
-- Use other coding techniques to make the code even shorter and avoiding repetitive conditional statements.
+- Refactor the repeated button-handling code using arrays and/or functions to make the program shorter and easier to expand.
 
-- Setting up a proper multi-stage project management framework for large projects involving different features, to make the process much smoother.
+- Develop a more structured project-management approach for larger projects involving multiple hardware and software features.
